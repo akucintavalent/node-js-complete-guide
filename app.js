@@ -9,13 +9,13 @@ const app = express();
 app.set('view engine', 'ejs'); // We wanna compile dynamic html with pug template engine
 app.set('views', 'views'); // We wanna use views folder for templates
 
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes.routes);
 
 app.use(shopRoutes);
 
