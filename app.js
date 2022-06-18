@@ -7,7 +7,7 @@ const expressHbs = require('express-handlebars');
 
 const app = express();
 
-app.engine('hbs', expressHbs());
+app.engine('hbs', expressHbs({ layoutDir: 'views/layouts', defaultLayout: 'main' }));
 app.set('view engine', 'hbs'); // We wanna compile dynamic html with pug template engine
 app.set('views', 'views'); // We wanna use views folder for templates
 
