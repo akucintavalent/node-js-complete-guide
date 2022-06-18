@@ -7,8 +7,8 @@ const expressHbs = require('express-handlebars');
 
 const app = express();
 
-app.engine('handlebars', expressHbs());
-app.set('view engine', 'handlebars'); // We wanna compile dynamic html with pug template engine
+app.engine('hbs', expressHbs());
+app.set('view engine', 'hbs'); // We wanna compile dynamic html with pug template engine
 app.set('views', 'views'); // We wanna use views folder for templates
 
 const adminData = require('./routes/admin');
