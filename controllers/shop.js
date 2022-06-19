@@ -21,6 +21,8 @@ exports.getProduct = (req, res, next) => {
         pageTitle: product.title,
         path: '/products',
       });
+    } else {
+      next();
     }
   });
 }
