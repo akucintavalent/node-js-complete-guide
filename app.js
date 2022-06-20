@@ -30,9 +30,20 @@ Product.belongsTo(User, { constraints: true, onDelete: 'CASCADE' });
 User.hasMany(Product);
 
 sequelize
-  .sync({ force: true }) // force: true will drop the table if it already exists
+  // .sync({ force: true }) // force: true will drop the table if it already exists
+  .sync()
   .then(result => {
+    return User.findByPk(1);
     // console.log(result);
+  })
+  .then(user => {
+    if (!user) {
+      return User.create({ name: 'John', email: 'test@test.com'})
+    }
+    return Promise.resolve(user);
+  })
+  .then(user => {
+    // console.log(user);
     app.listen(3000);
   })
   .catch(err => {
